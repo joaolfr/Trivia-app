@@ -18,8 +18,6 @@ export default () => {
         query,
       );
    
-      console.log('questions: ', data);
-
       setQuestions(data.results)
       setLoading(false);
 

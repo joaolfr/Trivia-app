@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import {Platform} from 'react-native';
 
 import styled from 'styled-components';
-import {metrics} from '~/utils';
+import metrics from '../../../utils/metrics';
 
 const TextStyled = styled.Text`
-  font-family: Futura;
   font-size: ${(props) => {
     switch (props.type) {
       case 'large':
@@ -24,8 +23,10 @@ const TextStyled = styled.Text`
         return metrics.hp(14);
     }
   }}px;
+  ${(props) => props.uppercase && 'text-transform: uppercase'};
+  ${(props) => props.letterSpace && 'letter-spacing: 1px;'};
   color: ${(props) => props.color || '#1F253C'};
-  ${(props) => {
+  /* ${(props) => {
     const classStyle = Platform.OS === 'ios' ? 'font-weight: ' : 'font-family';
     let type = '';
     switch (props.weight) {
@@ -55,9 +56,8 @@ const TextStyled = styled.Text`
         break;
     }
     return `${classStyle} ${type}`;
-  }};
-  ${(props) => props.uppercase && 'text-transform: uppercase'};
-  ${(props) => props.letterSpace && 'letter-spacing: 1px;'};
+  }}; */
+  
 `;
 
 TextStyled.propTypes = {

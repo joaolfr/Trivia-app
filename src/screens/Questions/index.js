@@ -1,122 +1,73 @@
-import React, { useState} from "react";
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import React from "react";
 import useTrivia from './hooks';
 import { ProgressBar } from "../../components";
-import {ResultModal} from './components';
+
+import {
+    OptionButton, 
+    OptionText, 
+    ButtonsWrapper, 
+    QuestionText, 
+    QuestionWrapper, 
+    CategoryText, 
+    Container
+} from './styles'
 
 const Questions = () => {
 
     const {
-        score,
-        showScoreModal,
-        restartQuiz,
         questions,
-        correctAnswers,
         progress,
         currentQuestion,
-        handleNext,
-        validateAnswer,
-        showNextButton
+        validateAnswer
     } = useTrivia();
 
 
     const renderQuestion = () => {
  
         return(
-            <View >
+            <QuestionWrapper >
                
-                <Text style={{color:'white'}} >
+                <QuestionText >
                     {questions[currentQuestion]?.question}
-                </Text>
+                </QuestionText>
                 
-            </View>
+            </QuestionWrapper>
             )
     };
 
     const renderOptions = () => {
         return(
-            <View>
-                <TouchableOpacity style={styles.optionBtn} onPress={() => validateAnswer("True")}>
-                    <Text>
-                        True
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.optionBtn} onPress={() => validateAnswer("False")}>
-                    <Text>
-                        False
-                    </Text>
-                </TouchableOpacity>
-            </View>
+            <ButtonsWrapper>
+                <OptionButton  onPress={() => validateAnswer("True")} >
+                    <OptionText>True</OptionText>
+                </OptionButton>
+                <OptionButton onPress={() => validateAnswer("False")} >
+                    <OptionText>False</OptionText>
+                </OptionButton>
+            </ButtonsWrapper>
         )
     };
 
-    const renderNextButton = () => {
-        
-        if(showNextButton){
-            return(
-                <TouchableOpacity 
-                    onPress={handleNext}
-                    style={{color:'red', backgroundColor:'green', width:'100%'}}
-                >
-                    <Text>Next</Text>
-                </TouchableOpacity>
-            )
-        }else{
-            return null
-        }
-    }
 
 
     return(
         
-        <View style={styles.container}>
+        <Container >
             {/* Header with category */}
-            <Text>
+            <CategoryText >
                 {questions[currentQuestion]?.category}
-            </Text>
+            </CategoryText>
             {/* progress bar */}
-            <ProgressBar length={questions.length} progress={progress}/>
+            <ProgressBar currentQuestion={currentQuestion} length={questions.length} progress={progress}/>
             {/* questions */}
             {renderQuestion()}
             {/* options */}
             {renderOptions()}
-            {/* next button */}
-            {renderNextButton()}
-            {/* score modal */}
-           <ResultModal 
-                visible={showScoreModal} 
-                score={score}  
-                questions={questions} 
-                correctAnswers={correctAnswers} 
-                restartQuiz={restartQuiz}
-            />
-
-        </View>
+      
+        </Container>
 
     )
 }
 
-
-const styles = StyleSheet.create({
-
-    container:{
-        flex:1,
-        position: 'relative',
-        padding: 10 ,
-        backgroundColor:'#393e6f'
-
-    },
-    optionBtn:{
-        
-        height:50,
-        margin: 15,
-        borderRadius: 10,
-        alignItems:'center',
-        backgroundColor:'#f2f2f2',
-        flexDirection:'row',
-        justifyContent:'center'
-    }
-
-});
 
 export default Questions;

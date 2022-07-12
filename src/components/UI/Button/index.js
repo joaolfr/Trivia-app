@@ -4,7 +4,7 @@ import {
     ButtonWrapper, Wrapper, ButtonText
 } from './styles'
 
-const Button = ({title, onPress}) => {
+const Button = ({title, onPress, style}) => {
 
     return(
         <Wrapper>

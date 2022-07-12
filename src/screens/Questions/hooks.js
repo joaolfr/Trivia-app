@@ -16,8 +16,6 @@ export default () => {
     const [correctOption, setCorrectOption] = useState(null);
     const [isOptionDisabled, setIsOptionDisabled] = useState(false);
     const [score, setScore] = useState(0);
-    const [showNextButton, setShowNextButton] = useState(false);
-    const [showScoreModal, setShowScoreModal] = useState(false);
     const [correctAnswers, setCorrectAnswers] = useState([])
     // progress bar state
     const [progress, setProgress] = useState(new Animated.Value(0));
@@ -40,20 +38,25 @@ export default () => {
             setCorrectAnswers([...correctAnswers, currentQuestion]);
 
         }
-        setShowNextButton(true);
+        handleNext();
     
     }
 
     const handleNext = () => {
         if(currentQuestion === questions?.length - 1){
-            setShowScoreModal(true);
+            navigation.navigate('Result', {
+                score,
+                questions,
+                correctAnswers,
+                restartQuiz
+            });
+
 
         }else{
             setCurrentQuestion(currentQuestion + 1);
             setCurrentOptionSelected(null);
             setCorrectOption(null);
             setIsOptionDisabled(false);
-            setShowNextButton(false);
         }
 
         Animated.timing(progress, {
@@ -75,8 +78,6 @@ export default () => {
         setCurrentOptionSelected(null);
         setCorrectOption(null);
         setIsOptionDisabled(false);
-        setShowNextButton(false);
-        setShowScoreModal(false);
 
         Animated.timing(progress, {
             toValue: 0,
@@ -99,10 +100,6 @@ export default () => {
         setIsOptionDisabled,
         score,
         setScore,
-        showNextButton,
-        setShowNextButton,
-        showScoreModal,
-        setShowScoreModal,
         restartQuiz,
         questions,
         correctAnswers,

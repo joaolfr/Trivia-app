@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.View`
-
     height: 48px;
     width: 100%;
     flex-direction: row ;
@@ -12,6 +11,7 @@ export const ButtonWrapper = styled.TouchableOpacity`
     flex: 1;
     justify-content: center;
     align-items: center;
+    
 
 `
 

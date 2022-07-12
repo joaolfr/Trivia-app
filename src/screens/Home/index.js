@@ -1,32 +1,24 @@
 import React from "react";
-import { Text, View , StyleSheet} from "react-native";
-import { Button } from "../../components";
+import { Text} from "react-native";
+import { Container, NormalText, StartButton, TextButton } from "./styles";
 
 const Home = ({navigation}) => {
     return(
-        <View style={styles.container}>
-            <Text>
+        <Container >
+            <NormalText>
                 Welcome to Trivia Challenge!
-            </Text>
-            <Text>
+            </NormalText>
+            <NormalText>
                You will be presented with 10 True or False questions.
-            </Text>
-            <Text>
+            </NormalText>
+            <NormalText>
                Can you score 100%?
-            </Text>
-            <Button title={'Bora porra'} onPress={() => navigation.navigate('Questions')}/>
-        </View>
+            </NormalText>
+            <StartButton onPress={() => navigation.navigate('Questions')}>
+                <TextButton>Start Quiz</TextButton>
+            </StartButton>
+        </Container>
     )
 }
 
 export default Home;
-
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        backgroundColor:'#393e6f',
-        flexDirection:'column',
-        alignItems:'center',
-        justifyContent:'space-evenly'
-    }
-});

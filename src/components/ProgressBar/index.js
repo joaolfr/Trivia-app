@@ -1,22 +1,23 @@
-import React, {useState} from 'react'
-import { View, Animated } from 'react-native'
+import React from 'react'
+import { Animated } from 'react-native'
+import {Container, ProgressContainer, CountingText} from './styles'
 
+const ProgressBar = ({currentQuestion, length, progress}) => {
 
-const ProgressBar = ({length, progress}) => {
-
-    
     const progressAnim = progress.interpolate({
         inputRange: [0, length],
         outputRange: ['0%', '100%']
     })
 
     return(
-        <View style={{width:'100%', height: 30, backgroundColor:'white', borderRadius:15, marginVertical:10}}>
-        <Animated.View style={[{height:30, borderRadius:15, backgroundColor:'green'},
-                        {width: progressAnim}]}>
+        <Container >
 
-        </Animated.View>
-    </View>
+        <ProgressContainer >
+            <Animated.View style={[{height:29, borderRadius:15, backgroundColor:'#57B890'},{width: progressAnim}]}>
+            </Animated.View>
+        </ProgressContainer>
+            <CountingText>{currentQuestion + 1} of {length}</CountingText>
+        </Container>
     )
 }
 
