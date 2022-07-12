@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { Animated } from 'react-native'
 import {Container, ProgressContainer, CountingText} from './styles'
 
@@ -20,5 +21,19 @@ const ProgressBar = ({currentQuestion, length, progress}) => {
         </Container>
     )
 }
+
+ProgressBar.propTypes = {
+    currentQuestion: PropTypes.number,
+    length: PropTypes.number,
+    progress: PropTypes.object,
+  
+  };
+  
+  ProgressBar.defaultProps = {
+    currentQuestion: null,
+    progress: {} ,
+    length: null,
+   
+  };
 
 export default ProgressBar;

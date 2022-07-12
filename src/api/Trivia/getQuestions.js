@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 import {API} from '../../api/config';
 import {useTriviaStore} from '../../stores';
 

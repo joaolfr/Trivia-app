@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 import { Text} from "react-native";
 import { Container, NormalText, StartButton, TextButton } from "./styles";
 
@@ -19,6 +21,13 @@ const Home = ({navigation}) => {
             </StartButton>
         </Container>
     )
+}
+
+Home.propTypes = {
+    navigation: PropTypes.object
+}
+Home.defaultProps = {
+    navigation : {}
 }
 
 export default Home;

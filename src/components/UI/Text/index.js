@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-import {Platform} from 'react-native';
-
 import styled from 'styled-components';
 import metrics from '../../../utils/metrics';
 
@@ -26,37 +24,6 @@ const TextStyled = styled.Text`
   ${(props) => props.uppercase && 'text-transform: uppercase'};
   ${(props) => props.letterSpace && 'letter-spacing: 1px;'};
   color: ${(props) => props.color || '#1F253C'};
-  /* ${(props) => {
-    const classStyle = Platform.OS === 'ios' ? 'font-weight: ' : 'font-family';
-    let type = '';
-    switch (props.weight) {
-      case 'bold':
-        type = Platform.OS === 'ios' ? 'bold' : 'Futura-Heavy';
-        break;
-      case 'heavy':
-        type = Platform.OS === 'ios' ? 700 : 'Futura-Heavy';
-        break;
-      case 'medium':
-        type = Platform.OS === 'ios' ? 600 : 'Futura-Book';
-        break;
-      case 'book':
-        type = Platform.OS === 'ios' ? 500 : 'Futura-Book';
-        break;
-      case 'light':
-        type = Platform.OS === 'ios' ? 400 : 'Futura-Light';
-        break;
-      case 'tiny':
-        type = Platform.OS === 'ios' ? 300 : 'Futura-Book';
-        break;
-      case 'semi':
-        type = Platform.OS === 'ios' ? 600 : 'Futura-Book';
-        break;
-      default:
-        type = Platform.OS === 'ios' ? 500 : 'Futura-Book';
-        break;
-    }
-    return `${classStyle} ${type}`;
-  }}; */
   
 `;
 

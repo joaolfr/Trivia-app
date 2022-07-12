@@ -1,10 +1,18 @@
 import React from "react";
-import {Container, QuestionsList, ScoreText, ResultBox, RemakeButton, ButtonText, OptionText} from './styles';
+import PropTypes from 'prop-types';
+import {
+    Container, 
+    QuestionsList, 
+    ScoreText, 
+    ResultBox, 
+    RemakeButton,
+    ButtonText, 
+    OptionText
+} from './styles';
 
 const Results = ({ route, navigation }) => {
 
     const { score, questions, correctAnswers, restartQuiz } = route.params;
-
 
     return(
   
@@ -36,5 +44,19 @@ const Results = ({ route, navigation }) => {
     
     )
 }
+
+Results.propTypes = {
+    score: PropTypes.number,
+    navigation: PropTypes.object,
+    route: PropTypes.object,
+  
+  };
+  
+  Results.defaultProps = {
+    score: null,
+    route: {},
+    navigation: {},
+   
+  };
 
 export default Results;

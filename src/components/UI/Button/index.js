@@ -18,13 +18,15 @@ const Button = ({title, onPress, style}) => {
 
 Button.propTypes = {
     title: PropTypes.string,
-    onPress: PropTypes.func
+    onPress: PropTypes.func,
+    style: PropTypes.object
     
   };
   
   Button.defaultProps = {
     title: 'Next',
-    onPress: () => {}
+    onPress: () => {},
+    style:{ }
    
   };
 
